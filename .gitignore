@@ -1,0 +1,18 @@
+# Datos generados por la app
+gastos.json
+reporte_gastos.csv
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Entorno virtual
+venv/
+.env
+
+# VS Code
+.vscode/
+
+# Sistema
+.DS_Store
+Thumbs.db
