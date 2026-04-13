@@ -56,6 +56,13 @@ tr:hover {
     background: #f9fafb;
 }
 
+.btn-edit {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 12px;
+}
+
 .btn-delete {
     color: #dc2626;
     text-decoration: none;

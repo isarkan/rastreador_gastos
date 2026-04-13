@@ -38,6 +38,7 @@
                     <td>{{ gasto.fecha if gasto.fecha else gasto['fecha'] }}</td>
                     <td>
                         <a href="/delete/{{ gasto.id if gasto.id else gasto['id'] }}" class="btn-delete">Eliminar</a>
+                        <a href="/edit/{{ gasto.id if gasto.id else gasto['id'] }}" class="btn-edit">Editar</a>
                     </td>
                 </tr>
                 {% endfor %}
