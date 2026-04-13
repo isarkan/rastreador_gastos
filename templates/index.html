@@ -13,7 +13,19 @@
         <form action="/add" method="POST" class="formulario">
             <input type="text" name="descripcion" placeholder="Descripción" required>
             <input type="number" step="0.01" name="monto" placeholder="Monto" required>
-            <input type="text" name="categoria" placeholder="Categoría">
+            <select name="categoria" required>
+                <option value="">Selecciona categoría</option>
+                <option value="Comidas diarias">🍽️ Comidas diarias</option>
+                <option value="Remesa">🛒 Remesa</option>
+                <option value="Aseo">🧼 Aseo</option>
+                <option value="Gastos hormiga">☕ Gastos hormiga</option>
+                <option value="Transporte">🚕 Transporte</option>
+                <option value="Servicios">💡 Servicios</option>
+                <option value="Ocio">🎉 Ocio</option>
+                <option value="Salud">💊 Salud</option>
+                <option value="Educación">📚 Educación</option>
+                <option value="Otros">📦 Otros</option>
+            </select>
             <button type="submit">Agregar</button>
         </form>
 

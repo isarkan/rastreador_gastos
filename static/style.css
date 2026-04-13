@@ -74,3 +74,9 @@ tr:hover {
     font-size: 22px;
     font-weight: bold;
 }
+
+input, select {
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+}
