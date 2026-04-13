@@ -51,6 +51,23 @@ def add_gasto():
     return redirect(url_for("index"))
 
 
+@app.route("/edit/<int:id>", methods=["GET", "POST"])
+def edit_gasto(id):
+    gastos = cargar_gastos()
+    gasto = next((g for g in gastos if g["id"] == id), None)
+    if not gasto:
+        return redirect(url_for("index"))
+
+    if request.method == "POST":
+        gasto["descripcion"] = request.form["descripcion"]
+        gasto["monto"] = float(request.form["monto"])
+        gasto["categoria"] = request.form.get("categoria") or "General"
+        guardar_gastos(gastos)
+        return redirect(url_for("index"))
+
+    return render_template("edit.html", gasto=gasto)
+
+
 @app.route("/delete/<int:id>")
 def delete_gasto(id):
     gastos = [g for g in cargar_gastos() if g["id"] != id]
