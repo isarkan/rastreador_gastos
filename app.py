@@ -55,7 +55,7 @@ def add_gasto():
 def delete_gasto(id):
     gastos = [g for g in cargar_gastos() if g["id"] != id]
     guardar_gastos(gastos)
-    app.run(debug=True)
+    return redirect(url_for("index"))
 
 if __name__ == "__main__":
     app.run(debug=True)
