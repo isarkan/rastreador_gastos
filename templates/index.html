@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastreador de Gastos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>💸 Rastreador de Gastos</h1>
+
+        <form action="/add" method="POST" class="formulario">
+            <input type="text" name="descripcion" placeholder="Descripción" required>
+            <input type="number" step="0.01" name="monto" placeholder="Monto" required>
+            <input type="text" name="categoria" placeholder="Categoría">
+            <button type="submit">Agregar</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Descripción</th>
+                    <th>Monto</th>
+                    <th>Categoría</th>
+                    <th>Fecha</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for gasto in gastos %}
+                <tr>
+                    <td>{{ gasto.id if gasto.id else gasto['id'] }}</td>
+                    <td>{{ gasto.descripcion if gasto.descripcion else gasto['descripcion'] }}</td>
+                    <td>${{ gasto.monto if gasto.monto else gasto['monto'] }}</td>
+                    <td>{{ gasto.categoria if gasto.categoria else gasto['categoria'] }}</td>
+                    <td>{{ gasto.fecha if gasto.fecha else gasto['fecha'] }}</td>
+                    <td>
+                        <a href="/delete/{{ gasto.id if gasto.id else gasto['id'] }}" class="btn-delete">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="total">
+            💰 Total gastado: ${{ total }}
+        </div>
+    </div>
+</body>
+</html>
