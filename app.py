@@ -74,5 +74,28 @@ def delete_gasto(id):
     guardar_gastos(gastos)
     return redirect(url_for("index"))
 
+
+@app.route("/export/csv")
+def export_csv():
+    import csv
+    from flask import Response
+    gastos = cargar_gastos()
+
+    def generar():
+        from io import StringIO
+        output = StringIO()
+        writer = csv.writer(output)
+        writer.writerow(["id", "descripcion", "monto", "categoria", "fecha"])
+        for g in gastos:
+            writer.writerow([g["id"], g["descripcion"], g["monto"], g["categoria"], g["fecha"]])
+        return output.getvalue()
+
+    return Response(
+        generar(),
+        mimetype="text/csv",
+        headers={"Content-Disposition": "attachment; filename=reporte_gastos.csv"}
+    )
+
+
 if __name__ == "__main__":
     app.run(debug=True)
